@@ -1,0 +1,27 @@
+{
+  "name": "postgres-connector",
+  "config": {
+    "name": "postgres-connector",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:postgresql://127.0.0.1:5001/test_db?prepareThreshold=0",
+    "connection.user": "test_user",
+    "connection.password": "test_pwd",
+    "dialect.name": "PostgreSqlDatabaseDialect",
+    "topic.prefix": "postgres_",
+    "catalog.pattern": "my_schema",
+    "schema.pattern": "my_schema",
+    "table.whitelist": "test",
+    "table.poll.interval.ms": 60000,
+    "poll.interval.ms": 5000,
+    "mode": "timestamp",
+    "timestamp.column.name": "date",
+    "tasks.max": 1,
+    "batch.max.rows": 100,
+    "errors.log.enable": true,
+    "errors.log.include.messages": true,
+    "errors.deadletterqueue.topic.name":"export-xml-errors",
+    "errors.tolerance": "all"
+  }
+}

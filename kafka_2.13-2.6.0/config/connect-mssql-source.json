@@ -1,0 +1,26 @@
+{
+  "name": "mssql-connector",
+  "config": {
+    "name": "mssql-connector",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:sqlserver://127.0.0.1;databaseName=test_db;selectMethod=cursor;responseBuffering=adaptive",
+    "connection.user": "test_user",
+    "connection.password": "test_pwd",
+    "dialect.name": "SqlServerDatabaseDialect",
+    "topic.prefix": "mssql_",
+    "table.whitelist": "test",
+    "table.poll.interval.ms": 60000,
+    "poll.interval.ms": 5000,
+    "mode": "timestamp",
+    "timestamp.column.name": "date",
+    "tasks.max": 1,
+    "batch.max.rows": 100,
+    "errors.log.enable": true,
+    "errors.log.include.messages": true,
+    "errors.deadletterqueue.topic.name":"test-errors",
+    "errors.tolerance": "all",
+    "validate.non.null": false
+  }
+}
